@@ -12,8 +12,8 @@ const contentReq = (cont)=>{
     for(let i =0; i<cont.data.length; i++) {
         console.log(cont.data[i])
         const html = `
-            <div class="card" id="card" style="width: 18rem;">
-            <img src="${cont.data[i].avatar}" class="card-img-top">
+            <div class="card" id="card" style="width: 10rem;">
+            <img src="${cont.data[i].avatar}" class="card-img-top avatar">
             <div class="card-body">
               <h5 class="card-title">${cont.data[i].first_name + " " + cont.data[i].last_name}</h5>
               <a href="#" class="">${cont.data[i].email}</a>
@@ -25,9 +25,18 @@ const contentReq = (cont)=>{
 }
 
 const construct = (text)=>{
-    document.getElementById('container').innerHTML = text;
+    document.getElementById('container').innerHTML += text;
 }
-// let a = getReqres("https://reqres.in/api/users?page=1")
-// console.log(a)
-getReqres("https://reqres.in/api/users?page=1")
+
+let page = 1
+const nextPage = ()=>{
+    page = page +1
+    console.log(page)
+    getReqres("https://reqres.in/api/users?page="+page)
+}
+
+document.getElementById('next').addEventListener("click",()=>{
+    nextPage()
+})
+getReqres("https://reqres.in/api/users?page="+page)
 
