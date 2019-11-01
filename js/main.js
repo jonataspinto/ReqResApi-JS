@@ -40,3 +40,14 @@ document.getElementById('next').addEventListener("click",()=>{
 })
 getReqres("https://reqres.in/api/users?page="+page)
 
+function esalu(){
+    return fetch("https://github.com/jonataspinto/ReqResApi-JS/blob/master/js/es.json")
+    .then(res=> res.json()).then(res => {
+        console.log(res)
+    })
+    .catch(error=>
+        console.log('Error:', error)
+    )
+}
+
+esalu()
